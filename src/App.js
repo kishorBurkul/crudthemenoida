@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import TaskManger from './Components/TaskManger';
+import { useState } from 'react';
+import {BrowserRouter , Routes , Route} from "react-router-dom";
+import AddTask from './Components/AddTask';
+import UpdateTask from './Components/UpdateTask';
+import Header from './Components/Header';
 
 function App() {
+
+
+  // const [darkTheme, setDarkTheme] = useState(false);
+
+  // const handleToggleTheme = () => {
+  //   setDarkTheme(!darkTheme);
+  // };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+ {/* <Header darkTheme={darkTheme} onToggleTheme={handleToggleTheme}/>  */}
+ <div className='container-fluid'>
+<BrowserRouter>
+<Routes>
+  
+  <Route path='/' element={<TaskManger/>}></Route>
+  <Route path='/addtask' element={<AddTask/>}></Route>
+  <Route path='/edit/:id' element={<UpdateTask/>}></Route>
+
+  
+</Routes>
+
+</BrowserRouter>
+</div>
+    </>
   );
 }
 
